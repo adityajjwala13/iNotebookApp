@@ -1,26 +1,33 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 function Navbar() {
   const location = useLocation();
-  let history = useHistory();
+  const history = useHistory();
+
   const handleLogout = () => {
-  localStorage.removeItem('token');
-  history.push('/login');
+    localStorage.removeItem("token");
+    history.push("/login");
   };
-  // useEffect(() => {
-  //   console.log(location.pathname);
-  //   // eslint-disable-next-line
-  // }, [location]);
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      className="navbar navbar-expand-lg fixed-top"
+      style={{
+        background: "linear-gradient(to right, #141E30, #243B55)",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+      }}
+    >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          iNotebook
+        <Link
+          className="navbar-brand d-flex align-items-center"
+          to="/"
+          style={{ color: "#fff", fontSize: "22px", fontWeight: "600" }}
+        >
+          📒 iNotebook
         </Link>
+
         <button
-          className="navbar-toggler"
+          className="navbar-toggler text-white"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -30,41 +37,40 @@ function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/" ? "active" : ""
-                }`}
-                aria-current="page"
-                to="/"
-              >
-                Home
-              </Link>
-            </li>
-            {/* <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/about" ? "active" : ""
-                }`}
-                to="/about"
-              >
-                About
-              </Link>
-            </li> */}
-          </ul>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
           {!localStorage.getItem("token") ? (
-            <form className="d-flex">
-              <Link className="btn btn-primary mx-2" to="/login" role="button">
-                LogIn
+            <div className="d-flex">
+              <Link
+                className="btn btn-outline-light me-2"
+                to="/login"
+                role="button"
+                style={{ borderRadius: "6px" }}
+              >
+                Log In
               </Link>
-              <Link className="btn btn-primary" to="/signup" role="button">
-                SignUp
+              <Link
+                className="btn btn-primary"
+                to="/signup"
+                role="button"
+                style={{
+                  backgroundColor: "#00c6ff",
+                  border: "none",
+                  borderRadius: "6px",
+                }}
+              >
+                Sign Up
               </Link>
-            </form>
+            </div>
           ) : (
-            <button type="button" onClick={handleLogout} class="btn btn-primary">
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="btn btn-danger"
+              style={{ borderRadius: "6px" }}
+            >
               Logout
             </button>
           )}

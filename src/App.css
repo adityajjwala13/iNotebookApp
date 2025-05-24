@@ -1,3 +1,20 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.alert {
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  z-index: 999;
+  text-align: center;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
 .App {
   text-align: center;
 }

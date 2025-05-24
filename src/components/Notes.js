@@ -11,7 +11,7 @@ function Notes(props) {
   let history = useHistory();
   useEffect(() => {
     if(localStorage.getItem('token'))
-    getNotes();
+      getNotes();
     else{
       history.push('/login');
     }

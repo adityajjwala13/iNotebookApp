@@ -10,7 +10,7 @@ import Signup from "./components/Signup";
 import Alert from "./components/Alert";
 
 function App() {
-  const [alert, setAlert] = useState(null);
+  const [alert1, setAlert] = useState("");
 
   const showAlert = (message, type) => {
     setAlert({
@@ -26,7 +26,7 @@ function App() {
       <NoteState>
         <Router>
           <Navbar />
-          <Alert alert={alert} />
+          <Alert alert={alert1} />
           <div className="container">
             <Switch>
               <Route exact path="/">
