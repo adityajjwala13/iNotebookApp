@@ -2,7 +2,7 @@ import NoteContext from "./noteContext";
 import { useState } from "react";
 
 const NoteState = (props) => {
-  const host = "http://localhost:5000";
+  const host = "https://inotebookapp-1.onrender.com";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
@@ -12,9 +12,8 @@ const NoteState = (props) => {
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: "GET",
       headers: {
-        "auth-token":
-        localStorage.getItem('token'),
-          // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIxYTNkMjM2MThjYWUyYTUxMjUzZGJmIn0sImlhdCI6MTY0NTk2ODQxNX0.ezq2CQvQHBfvtC0sqZneC88lehXMPCeODhUeoJyjB3M",
+        "auth-token": localStorage.getItem("token"),
+        // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIxYTNkMjM2MThjYWUyYTUxMjUzZGJmIn0sImlhdCI6MTY0NTk2ODQxNX0.ezq2CQvQHBfvtC0sqZneC88lehXMPCeODhUeoJyjB3M",
       },
     });
     const json = await response.json();
@@ -28,9 +27,8 @@ const NoteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-        localStorage.getItem('token'),
-          // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIxYTNkMjM2MThjYWUyYTUxMjUzZGJmIn0sImlhdCI6MTY0NTk2NTM4OX0.WBa_RWxHSo9mKMwf2ioY_G-mDyBE9Nrk5vnh0kKehmQ",
+        "auth-token": localStorage.getItem("token"),
+        // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIxYTNkMjM2MThjYWUyYTUxMjUzZGJmIn0sImlhdCI6MTY0NTk2NTM4OX0.WBa_RWxHSo9mKMwf2ioY_G-mDyBE9Nrk5vnh0kKehmQ",
       },
       body: JSON.stringify({ title, description, tag }),
     });
@@ -44,8 +42,7 @@ const NoteState = (props) => {
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: "DELETE",
       headers: {
-        "auth-token":
-        localStorage.getItem('token'),
+        "auth-token": localStorage.getItem("token"),
       },
     });
     const json = await response.json();
@@ -62,15 +59,14 @@ const NoteState = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-        localStorage.getItem('token'),
+        "auth-token": localStorage.getItem("token"),
       },
       body: JSON.stringify({ title, description, tag }),
     });
     const json = await response.json();
     console.log(json);
     // Logic to edit in client
-    let newNotes=JSON.parse(JSON.stringify(notes));
+    let newNotes = JSON.parse(JSON.stringify(notes));
     for (let index = 0; index < newNotes.length; index++) {
       const element = newNotes[index];
       if (element._id === id) {
