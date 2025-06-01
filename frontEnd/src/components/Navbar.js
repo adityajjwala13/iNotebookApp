@@ -11,7 +11,7 @@ function Navbar() {
 
   return (
     <nav
-      className="navbar navbar-expand-lg fixed-top"
+      className="navbar navbar-expand-lg navbar-dark fixed-top"
       style={{
         background: "linear-gradient(to right, #141E30, #243B55)",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
@@ -27,7 +27,7 @@ function Navbar() {
         </Link>
 
         <button
-          className="navbar-toggler text-white"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
