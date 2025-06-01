@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
   const [credentials, setCredentials] = useState({
@@ -8,7 +8,7 @@ const Signup = (props) => {
     password: "",
     cpassword: "",
   });
-  let history = useHistory();
+  let history = useNavigate();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -34,7 +34,7 @@ const Signup = (props) => {
     if (json.success) {
       localStorage.setItem("token", json.authtoken);
       props.showAlert("Account Created Successfully", "success");
-      history.push("/");
+      history("/");
     } else {
       props.showAlert("Invalid Details", "danger");
     }

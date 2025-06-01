@@ -1,12 +1,12 @@
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const location = useLocation();
-  const history = useHistory();
+  const history = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    history.push("/login");
+    history("/login");
   };
 
   return (
